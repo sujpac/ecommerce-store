@@ -1,4 +1,4 @@
-# eCommerce-Store
+# Ecommerce-Store
 This is an e-commerce website built with Django. It has the basics for hosting a store, adding products, and processing payments online.
 
 ## Setup

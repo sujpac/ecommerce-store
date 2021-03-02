@@ -14,4 +14,7 @@ def checkout(request):
 
 
 def products(request):
-    return render(request, "products.html")
+    context = {
+        'items': Item.objects.all()
+    }
+    return render(request, "products.html", context)
