@@ -1,13 +1,31 @@
 {
-  "python.pythonPath": "/Users/sujitp/Projects/ecommerce-store/env/bin/python3.8",
-  "editor.formatOnSave": true,
+  "python.pythonPath": "${workspaceFolder}/env/bin/python",
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.pylintPath": "${workspaceFolder}/env/bin/pylint",
+  "python.linting.pylintArgs": [
+    "--verbose",
+    "--load-plugins=pylint_django",
+    "--django-settings-module=ecommerce_store.settings"
+  ],
+  "python.linting.pylintUseMinimalCheckers": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Path": "${workspaceFolder}/env/bin/flake8",
+  "python.linting.flake8Args": [
+    "--verbose",
+    "--ignore=F841"
+  ],
   "python.linting.pycodestyleEnabled": true,
-  "python.linting.pylintEnabled": true,
-  "python.linting.pylintPath": "pylint",
-  "python.linting.pylintArgs": ["W0614", "--load-plugins", "pylint_django"],
-  "python.venvPath": "${workspaceFolder}/env/bin/python3",
-  "python.linting.pycodestyleArgs": ["--ignore=E501"],
+  "python.linting.pycodestylePath": "${workspaceFolder}/env/bin/pycodestyle",
+  "python.linting.pycodestyleArgs": [
+    "--ignore=E501"
+  ],
+  "python.jediPath": "${workspaceFolder}/env/lib/python3.8/site-packages/jedi",
+  "python.jediMemoryLimit": 0,
   "files.exclude": {
     "**/*.pyc": true
-  }
+  },
+  "editor.formatOnSave": true,
+  "oneDarkPro.vivid": false,
+  "kite.codefinder.enableLineDecoration": false,
 }
