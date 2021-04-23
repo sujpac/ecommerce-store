@@ -28,4 +28,5 @@
   "editor.formatOnSave": true,
   "oneDarkPro.vivid": false,
   "kite.codefinder.enableLineDecoration": false,
+  "python.autoComplete.extraPaths": [],
 }
