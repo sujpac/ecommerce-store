@@ -75,6 +75,11 @@ class CheckoutView(View):
             return redirect("core:order-summary")
 
 
+class PaymentView(View):
+    def get(self, *args, **kwargs):
+        return render(self.request, "payment.html")
+
+
 @login_required
 def add_to_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
