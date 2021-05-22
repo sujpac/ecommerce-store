@@ -29,4 +29,5 @@
   "oneDarkPro.vivid": false,
   "kite.codefinder.enableLineDecoration": false,
   "python.autoComplete.extraPaths": [],
+  "python.analysis.extraPaths": [],
 }

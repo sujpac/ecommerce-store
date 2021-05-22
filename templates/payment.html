@@ -1,8 +1,17 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block extra_head %}
+  <meta charset="utf-8" />
+  <title>Accept a card payment</title>
+  <meta name="description" content="A demo of a card payment on Stripe" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link href="{% static 'css/stripe_global.css' %}" rel="stylesheet">
   <script src="https://js.stripe.com/v3/"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+  <script type="text/javascript" src="{% static 'js/stripe_client.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}
@@ -22,7 +31,20 @@
           <!--Card-->
           <div class="card">
 
-            
+            <!-- Display a payment form -->
+            <form id="payment-form">
+              <input type="text" id="email" placeholder="Email address" />
+              <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+              <button id="submit">
+                <div class="spinner hidden" id="spinner"></div>
+                <span id="button-text">Pay</span>
+              </button>
+              <p id="card-error" role="alert"></p>
+              <p class="result-message hidden">
+                Payment succeeded, see the result in your
+                <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+              </p>
+            </form>
 
           </div>
           <!--/.Card-->
@@ -36,5 +58,4 @@
     </div>
   </main>
   <!--Main layout-->
-
 {% endblock %}

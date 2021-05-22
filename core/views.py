@@ -6,8 +6,14 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, View
 from django.shortcuts import redirect
 from django.utils import timezone
+from django.http.response import JsonResponse
 from .forms import CheckoutForm
 from .models import Item, OrderItem, Order, BillingAddress
+import stripe
+import json
+
+stripe.api_key = ('sk_test_51Iqq9VGdtAxa6WZmow3Cy2BghD22SRYmA1lAvcEcIyivgPxYdb'
+                  'KvLcZUAZdNgy7DOj4KfAMJEL33t6x2X4yvuX5p00ZkQZ0yZQ')
 
 
 class HomeView(ListView):
@@ -78,6 +84,23 @@ class CheckoutView(View):
 class PaymentView(View):
     def get(self, *args, **kwargs):
         return render(self.request, "payment.html")
+
+
+class StripeIntentView(View):
+    def post(self, request, *args, **kwargs):
+        try:
+            customer = stripe.Customer.create_customer(email=kwargs['email'])
+            intent = stripe.PaymentIntent.create(
+                amount=555,
+                currency='usd',
+                customer=customer.id,
+                metadata={}
+            )
+            return JsonResponse({
+                'clientSecret': intent['client_secret']
+            })
+        except Exception as e:
+            return JsonResponse({'error': str(e)})
 
 
 @login_required

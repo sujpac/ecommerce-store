@@ -7,6 +7,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-05sgp9!deq=q1nltm@^^2cc+v29i(tyybv3v2t77qi66czazj'
 ALLOWED_HOSTS = []
 
+STRIPE_PUBLIC_KEY = ('pk_test_51Iqq9VGdtAxa6WZmHr1W5SkQcq1hlUNKG6UJ0ZU6WkHhVEL'
+                     'n0VNOChE7TirQNNsY4tXonZLUQPq1STfXPvDOGGIn00APKb9G1L')
+STRIPE_SECRET_KEY = ('sk_test_51Iqq9VGdtAxa6WZmow3Cy2BghD22SRYmA1lAvcEcIyivgPx'
+                     'YdbKvLcZUAZdNgy7DOj4KfAMJEL33t6x2X4yvuX5p00ZkQZ0yZQ')
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
