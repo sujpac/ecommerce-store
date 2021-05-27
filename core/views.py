@@ -11,6 +11,9 @@ from .forms import CheckoutForm
 from .models import Item, OrderItem, Order, BillingAddress
 import stripe
 import json
+import logging
+
+logger = logging.getLogger('mylogger')
 
 stripe.api_key = ('sk_test_51Iqq9VGdtAxa6WZmow3Cy2BghD22SRYmA1lAvcEcIyivgPxYdb'
                   'KvLcZUAZdNgy7DOj4KfAMJEL33t6x2X4yvuX5p00ZkQZ0yZQ')
@@ -89,13 +92,15 @@ class PaymentView(View):
 class StripeIntentView(View):
     def post(self, request, *args, **kwargs):
         try:
+            req_json = json.loads(request.body)
             customer = stripe.Customer.create_customer(email=kwargs['email'])
             intent = stripe.PaymentIntent.create(
                 amount=555,
                 currency='usd',
-                customer=customer.id,
+                customer=customer['id'],
                 metadata={}
             )
+            print('clientSecret', intent['client_secret'])
             return JsonResponse({
                 'clientSecret': intent['client_secret']
             })
